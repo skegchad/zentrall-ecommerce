@@ -3,13 +3,13 @@ import { Utensils, Shirt, Laptop, Sparkles, Wrench, Gift, House, Tag } from 'luc
 import './Categorias.css'
 
 const categorias = [
-  { nombre: 'Gastronomía', icono: Utensils },
-  { nombre: 'Moda', icono: Shirt },
+  { nombre: 'Productos', icono: Utensils },
+  { nombre: 'Sitio web', icono: Shirt },
   { nombre: 'Tech', icono: Laptop },
-  { nombre: 'Belleza', icono: Sparkles },
+  { nombre: 'Aplicaciones', icono: Sparkles },
   { nombre: 'Servicios', icono: Wrench },
-  { nombre: 'Regalos', icono: Gift },
-  { nombre: 'Hogar', icono: House },
+  { nombre: 'Proyectos', icono: Gift },
+  { nombre: 'Comercio electrónico', icono: House },
   { nombre: 'Ofertas', icono: Tag },
 ]
 

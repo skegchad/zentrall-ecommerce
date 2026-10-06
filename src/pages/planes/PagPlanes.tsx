@@ -16,7 +16,7 @@ function Explorar() {
   return (
     <section className="seccion">
       <h2>
-        {q ? `Resultados para "${q}"` : categoria ? categoria : 'Explorar productos'}
+        {q ? `Resultados para "${q}"` : categoria ? categoria : 'Explorar planes'}
       </h2>
       {resultados.length > 0 ? (
         <Tarjetas items={resultados} cuadricula />

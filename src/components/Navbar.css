@@ -105,3 +105,135 @@
 .boton-entrar:hover {
   opacity: 0.88;
 }
+
+/* ===== Móvil: elementos que solo existen en pantallas chicas ===== */
+.boton-menu,
+.sidebar,
+.overlay {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  /* El header pasa de 3 columnas a una fila simple */
+  .header-contenido {
+    display: flex;
+    gap: 0.8rem;
+  }
+
+  .menu {
+    display: none;
+  }
+
+  .acciones {
+    margin-left: auto;
+  }
+
+  /* "Entrar" vive dentro de la barra lateral */
+  .acciones .boton-entrar {
+    display: none;
+  }
+
+  .boton-menu {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 42px;
+    border-radius: 10px;
+    border: 1px solid var(--color-borde);
+    background: transparent;
+    color: var(--color-texto);
+    cursor: pointer;
+  }
+
+  /* Fondo oscuro detrás de la barra */
+  .overlay {
+    display: block;
+    position: fixed;
+    inset: 0;
+    z-index: 90;
+    background: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.25s;
+  }
+
+  .overlay.visible {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  /* Barra lateral: sale desde la izquierda */
+  .sidebar {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    z-index: 100;
+    width: 280px;
+    max-width: 85vw;
+    padding: 1rem;
+    background: var(--color-superficie);
+    border-right: 1px solid var(--color-borde);
+    transform: translateX(-100%);
+    transition: transform 0.25s ease;
+  }
+
+  .sidebar.abierta {
+    transform: translateX(0);
+  }
+
+  .sidebar-cabecera {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+  }
+
+  .boton-cerrar {
+    width: 42px;
+    height: 42px;
+    border-radius: 10px;
+    border: 1px solid var(--color-borde);
+    background: transparent;
+    color: var(--color-texto);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
+
+  .sidebar ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+  }
+
+  .sidebar li a {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    padding: 0.8rem 1rem;
+    border: 1px solid transparent;
+    border-radius: 10px;
+    font-weight: 600;
+    color: var(--color-texto-suave);
+    text-decoration: none;
+  }
+
+  .sidebar li a.active {
+    background: var(--color-activo-fondo);
+    border-color: var(--color-activo-borde);
+    color: var(--color-activo-texto);
+  }
+
+  .sidebar-entrar {
+    margin-top: auto;
+    text-align: center;
+  }
+}
