@@ -94,3 +94,9 @@ code {
   padding: 4px 8px;
   background: var(--code-bg);
 }
+
+hr {
+  border: none;
+  border-top: 1px solid var(--color-borde);
+  margin: 1rem 0;
+}

@@ -1,13 +1,13 @@
 import { useSearchParams } from 'react-router-dom'
 import Tarjetas from '../../components/Tarjetas'
-import { productos } from '../../data/Planes'
+import { planes } from '../../data/Planes'
 
 function Explorar() {
   const [params] = useSearchParams()
   const q = params.get('q')?.toLowerCase() ?? ''
   const categoria = params.get('categoria') ?? ''
 
-  const resultados = productos.filter(
+  const resultados = planes.filter(
     (p) =>
       p.nombre.toLowerCase().includes(q) &&
       (categoria === '')

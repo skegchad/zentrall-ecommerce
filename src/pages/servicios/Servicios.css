@@ -1,10 +1,10 @@
-.lista-tiendas {
+.lista-servicios {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   gap: 1rem;
 }
 
-.tienda {
+.servicio {
   display: flex;
   gap: 1rem;
   background: var(--color-tarjeta);
@@ -13,7 +13,7 @@
   box-shadow: 0 1px 6px rgba(0, 0, 0, 0.08);
 }
 
-.tienda-avatar {
+.servicio-avatar {
   flex-shrink: 0;
   width: 56px;
   height: 56px;
@@ -27,6 +27,6 @@
   justify-content: center;
 }
 
-.tienda h3 { margin: 0 0 0.3rem; }
-.tienda p { margin: 0 0 0.4rem; }
-.tienda small { color: #777; }
+.servicio h3 { margin: 0 0 0.3rem; }
+.servicio p { margin: 0 0 0.4rem; }
+.servicio small { color: #777; }

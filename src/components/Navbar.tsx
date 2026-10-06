@@ -1,13 +1,13 @@
 import { Link, NavLink } from 'react-router-dom'
-import { House, Store, Compass, Moon, Sun, InfoIcon } from 'lucide-react'
+import { House, Moon, Sun, InfoIcon, ListCheckIcon, HandPlatter } from 'lucide-react'
 import logo from '../assets/zentrall-isotipo.svg'
 import { useTema } from '../hooks/useTema'
 import './Navbar.css'
 
 const enlaces = [
   { nombre: 'Inicio', ruta: '/', icono: House },
-  { nombre: 'Tiendas', ruta: '/tiendas', icono: Store },
-  { nombre: 'Explorar', ruta: '/explorar', icono: Compass },
+  { nombre: 'Servicios', ruta: '/servicios', icono: HandPlatter },
+  { nombre: 'Planes', ruta: '/planes', icono: ListCheckIcon },
   { nombre: 'Conocenos', ruta: '/conocenos', icono: InfoIcon },
 ]
 

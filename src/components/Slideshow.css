@@ -3,104 +3,331 @@
   height: 420px;
   margin: 1.5rem auto;
   max-width: 1200px;
+
   border-radius: var(--radio);
   overflow: hidden;
+
+  isolation: isolate;
+
+  background: var(--color-fondo);
 }
+
+
+/* =========================================
+   SLIDES
+   ========================================= */
 
 .slide {
   position: absolute;
   inset: 0;
-  background-size: cover;
-  background-position: center;
+
   opacity: 0;
+
   transition: opacity 0.8s ease;
+
   display: flex;
   align-items: center;
+
+  overflow: hidden;
+
+  z-index: 1;
 }
 
 .slide.activa {
   opacity: 1;
 }
 
-/* Degradado a la izquierda para que el texto se lea */
-.slide::before {
-  content: '';
+
+/* =========================================
+   IMAGEN
+   ========================================= */
+
+.slide-fondo {
   position: absolute;
   inset: 0;
-  background: linear-gradient(90deg, var(--color-fondo) 0%, var(--color-header) 45%, transparent 75%);
+
+  background-size: cover;
+  background-position: center;
+
+  transform: scale(1);
+
+  transition:
+    transform 1.2s cubic-bezier(.2,.8,.2,1);
+
+  z-index: 0;
 }
+
+
+/* ZOOM AL PASAR EL CURSOR */
+
+.slideshow:hover .slide.activa .slide-fondo {
+  transform: scale(1.08);
+}
+
+
+/* =========================================
+   DEGRADADO
+   ========================================= */
+
+.slide-overlay {
+  position: absolute;
+  inset: 0;
+
+  background:
+    linear-gradient(
+      90deg,
+      var(--color-fondo) 0%,
+      var(--color-header) 40%,
+      rgba(255,255,255,0.15) 70%,
+      transparent 100%
+    );
+
+  z-index: 1;
+
+  pointer-events: none;
+}
+
+/* =========================================
+   MAREA LÍQUIDA
+   ========================================= */
+
+.marea {
+  position: absolute;
+
+  top: 0;
+  left: 0;
+
+  width: 62%;
+  height: 100%;
+
+  z-index: 2;
+
+  pointer-events: none;
+
+  overflow: visible;
+}
+
+.marea-path {
+  fill: var(--color-fondo);
+
+  /* TOTALMENTE SÓLIDO */
+  opacity: 1;
+}
+
+
+/* =========================================
+   CAPAS
+   ========================================= */
+
+.slide-fondo {
+  position: absolute;
+  inset: 0;
+
+  background-size: cover;
+  background-position: center;
+
+  transform: scale(1);
+
+  transition:
+    transform 1.2s cubic-bezier(.2, .8, .2, 1);
+
+  z-index: 0;
+}
+
+
+/* Zoom */
+
+.slideshow:hover .slide.activa .slide-fondo {
+  transform: scale(1.08);
+}
+
+
+.slide-overlay {
+  position: absolute;
+  inset: 0;
+
+  z-index: 1;
+
+  pointer-events: none;
+
+  background: linear-gradient(
+    90deg,
+    rgba(255,255,255,0.05) 0%,
+    transparent 70%
+  );
+}
+
+
+/* TEXTO POR ENCIMA DE TODO */
+/* =========================================
+   TEXTO
+   ========================================= */
+
 
 .slide-texto {
   position: relative;
+
+  z-index: 5;
+
   max-width: 420px;
+
   padding: 0 4rem;
 }
 
 .slide-texto h1 {
   font-size: 2.8rem;
+
   line-height: 1.1;
+
   margin: 0 0 1rem;
+
   color: var(--color-primario);
 }
 
 .slide-texto p {
   margin: 0 0 1.5rem;
+
   line-height: 1.5;
 }
 
+
+/* =========================================
+   BOTÓN
+   ========================================= */
+
 .boton {
   background: var(--color-primario);
+
   color: white;
+
   border: none;
+
   padding: 0.8rem 1.6rem;
+
   border-radius: 8px;
+
   font-size: 1rem;
+
   cursor: pointer;
+
+  transition:
+    transform .25s ease,
+    opacity .25s ease;
 }
 
 .boton:hover {
-  opacity: 0.85;
+  opacity: .85;
+  transform: translateY(-2px);
 }
+
+
+/* =========================================
+   FLECHAS
+   ========================================= */
 
 .flecha {
   position: absolute;
+
   top: 50%;
+
   transform: translateY(-50%);
-  z-index: 3;
+
+  z-index: 6;
+
   background: var(--color-fondo);
+
   color: var(--color-primario);
+
   border: none;
+
   font-size: 1.8rem;
+
   width: 2.6rem;
   height: 2.6rem;
+
   border-radius: 50%;
+
   cursor: pointer;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+
+  box-shadow: 0 2px 8px rgba(0, 0, 0, .2);
 }
 
-.izquierda { left: 1rem; }
-.derecha { right: 1rem; }
+.izquierda {
+  left: 1rem;
+}
+
+.derecha {
+  right: 1rem;
+}
+
+
+/* =========================================
+   PUNTOS
+   ========================================= */
 
 .puntos {
   position: absolute;
+
   bottom: 1rem;
   left: 50%;
+
   transform: translateX(-50%);
-  z-index: 3;
+
+  z-index: 6;
+
   display: flex;
-  gap: 0.5rem;
+
+  gap: .5rem;
 }
 
 .punto {
   width: 10px;
   height: 10px;
+
   border-radius: 50%;
+
   border: none;
-  background: rgba(0, 0, 0, 0.3);
+
+  background: rgba(0,0,0,.3);
+
   cursor: pointer;
+
   padding: 0;
 }
 
 .punto.activo {
   background: var(--color-primario);
+}
+
+.slide {
+  z-index: 1;
+}
+
+.slide-fondo {
+  z-index: 0;
+}
+
+.slide-overlay {
+  z-index: 1;
+}
+
+.slideshow::before {
+  z-index: 3;
+}
+
+.slide-texto {
+  z-index: 4;
+}
+
+.flecha,
+.puntos {
+  z-index: 5;
+}
+
+.flecha {
+  z-index: 10;
+}
+
+.puntos {
+  z-index: 10;
 }

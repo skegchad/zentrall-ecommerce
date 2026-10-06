@@ -1,4 +1,4 @@
-export type Tienda = {
+export type Servicio = {
   id: number
   nombre: string
   categoria: string
@@ -7,7 +7,7 @@ export type Tienda = {
   verificada: boolean
 }
 
-export const tiendas: Tienda[] = [
+export const servicios: Servicio[] = [
   { id: 1, nombre: 'TechGye', categoria: 'Tech', descripcion: 'Accesorios y gadgets.', sector: 'Urdesa', verificada: true },
   { id: 2, nombre: 'Moda Norte', categoria: 'Moda', descripcion: 'Ropa casual y básicos.', sector: 'Alborada', verificada: true },
   { id: 3, nombre: 'Bella Piel', categoria: 'Belleza', descripcion: 'Cuidado de la piel.', sector: 'Kennedy', verificada: false },
