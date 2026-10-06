@@ -1,0 +1,114 @@
+.tarjetas {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 210px;
+  gap: 1rem;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding-bottom: 0.5rem;
+}
+
+.tarjeta {
+  scroll-snap-align: start;
+  background: var(--color-tarjeta);
+  border-radius: 12px;
+  padding: 0.7rem;
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.08);
+}
+
+.tarjeta-imagen {
+  position: relative;
+  height: 170px;
+  background: #f1f0ec;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.tarjeta-imagen img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.etiqueta {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  background: var(--color-descuento);
+  color: white;
+  font-size: 0.75rem;
+  font-weight: bold;
+  padding: 0.2rem 0.5rem;
+  border-radius: 6px;
+}
+
+.tarjeta h3 {
+  font-size: 0.95rem;
+  margin: 0.7rem 0 0.3rem;
+}
+
+.rating {
+  font-size: 0.8rem;
+  color: #777;
+}
+
+.estrellas {
+  color: #f5a623;
+  margin-right: 0.3rem;
+}
+
+.tarjeta-pie {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 0.6rem;
+}
+
+.precio {
+  font-weight: bold;
+  font-size: 1.1rem;
+  color: var(--color-precio);
+}
+
+.precio-anterior {
+  margin-left: 0.4rem;
+  font-size: 0.8rem;
+  color: #999;
+  text-decoration: line-through;
+}
+
+.carrito {
+  background: var(--color-primario);
+  border: none;
+  width: 5.2rem;
+  height: 2.7rem;
+  border-radius: 10px;
+  cursor: pointer;
+  color: var(--color-fondo);
+  font-family: "system-ui";
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+.tarjetas.cuadricula {
+  grid-auto-flow: row;
+  grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+  grid-auto-columns: auto;
+  overflow: visible;
+}
+.nombre-plan {
+  font-size: 2rem !important;
+  text-align: center;
+}
+
+.rating {
+  text-align: left;
+}
+
+.rating ul {
+  text-align: left;
+  padding-left: 20px;
+}
+
+.rating li {
+  margin-bottom: 8px;
+}

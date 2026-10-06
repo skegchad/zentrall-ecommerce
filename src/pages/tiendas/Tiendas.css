@@ -1,0 +1,32 @@
+.lista-tiendas {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1rem;
+}
+
+.tienda {
+  display: flex;
+  gap: 1rem;
+  background: var(--color-tarjeta);
+  padding: 1rem;
+  border-radius: 12px;
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.08);
+}
+
+.tienda-avatar {
+  flex-shrink: 0;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--color-acento);
+  color: var(--color-primario);
+  font-size: 1.5rem;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tienda h3 { margin: 0 0 0.3rem; }
+.tienda p { margin: 0 0 0.4rem; }
+.tienda small { color: #777; }

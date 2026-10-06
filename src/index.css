@@ -1,0 +1,96 @@
+/* ===== MODO CLARO ===== */
+:root {
+  --color-fondo: #f6f5fb;
+  --color-header: rgba(255, 255, 255, 0.85);
+  --color-superficie: #ffffff;
+  --color-tarjeta: #ffffff;
+  --color-borde: #e3e1f0;
+  --color-texto: #1b1b2f;
+  --color-texto-suave: #6b6d85;
+  --color-primario: #5b4fd6;
+  --color-sobre-primario: #ffffff;
+  --color-circulo: #e3e0fb;
+  --color-circulo-icono: #3b3a8f;
+  --color-activo-fondo: #fdece7;
+  --color-activo-borde: #f3b9aa;
+  --color-activo-texto: #c2503a;
+  --color-descuento: #e5604f;
+  --color-precio: #b0402b;
+  --color-imagen: #efedf8;
+  --velo: 246, 245, 251;
+  --radio: 16px;
+}
+
+/* ===== MODO OSCURO ===== */
+:root[data-tema='dark'] {
+  --color-fondo: #0b0d17;
+  --color-header: rgba(13, 15, 26, 0.85);
+  --color-superficie: #101226;
+  --color-tarjeta: #141629;
+  --color-borde: #262a45;
+  --color-texto: #f1f2f8;
+  --color-texto-suave: #9a9eb8;
+  --color-primario: #b4a6f7;
+  --color-sobre-primario: #14132a;
+  --color-circulo: #2a2e78;
+  --color-circulo-icono: #ffffff;
+  --color-activo-fondo: rgba(240, 138, 115, 0.14);
+  --color-activo-borde: rgba(240, 138, 115, 0.45);
+  --color-activo-texto: #f59a85;
+  --color-descuento: #f0736a;
+  --color-precio: #f59a85;
+  --color-imagen: #1c1f38;
+  --velo: 11, 13, 23;
+}
+
+body {
+  margin: 0;
+  background: var(--color-fondo);
+  color: var(--color-texto);
+  font-family: system-ui, sans-serif;
+  transition: background 0.25s, color 0.25s;
+}
+
+h1,
+h2 {
+  font-family: var(--heading);
+  font-weight: 500;
+  color: var(--text-h);
+}
+
+h1 {
+  font-size: 56px;
+  letter-spacing: -1.68px;
+  margin: 32px 0;
+  @media (max-width: 1024px) {
+    font-size: 36px;
+    margin: 20px 0;
+  }
+}
+h2 {
+  font-size: 50px;
+  line-height: 118%;
+  letter-spacing: -0.24px;
+  margin: 0 0 8px;
+  @media (max-width: 1024px) {
+    font-size: 20px;
+  }
+}
+p {
+  margin: 0;
+}
+
+code,
+.counter {
+  font-family: var(--mono);
+  display: inline-flex;
+  border-radius: 4px;
+  color: var(--text-h);
+}
+
+code {
+  font-size: 15px;
+  line-height: 135%;
+  padding: 4px 8px;
+  background: var(--code-bg);
+}

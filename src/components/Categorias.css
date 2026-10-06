@@ -1,0 +1,46 @@
+
+.categoria {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  min-width: 80px;
+}
+
+.categoria:hover .categoria-circulo {
+  transform: translateY(-3px);
+}
+
+.categorias {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.2rem 1.5rem;
+  background: var(--color-superficie);
+  border: 1px solid var(--color-borde);
+  border-radius: var(--radio);
+  overflow-x: auto;
+}
+
+.categoria-circulo {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--color-circulo);
+  color: var(--color-circulo-icono);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s;
+}
+
+.categoria-nombre {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--color-texto);
+}

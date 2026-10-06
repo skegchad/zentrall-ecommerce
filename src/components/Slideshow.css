@@ -1,0 +1,106 @@
+.slideshow {
+  position: relative;
+  height: 420px;
+  margin: 1.5rem auto;
+  max-width: 1200px;
+  border-radius: var(--radio);
+  overflow: hidden;
+}
+
+.slide {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  transition: opacity 0.8s ease;
+  display: flex;
+  align-items: center;
+}
+
+.slide.activa {
+  opacity: 1;
+}
+
+/* Degradado a la izquierda para que el texto se lea */
+.slide::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, var(--color-fondo) 0%, var(--color-header) 45%, transparent 75%);
+}
+
+.slide-texto {
+  position: relative;
+  max-width: 420px;
+  padding: 0 4rem;
+}
+
+.slide-texto h1 {
+  font-size: 2.8rem;
+  line-height: 1.1;
+  margin: 0 0 1rem;
+  color: var(--color-primario);
+}
+
+.slide-texto p {
+  margin: 0 0 1.5rem;
+  line-height: 1.5;
+}
+
+.boton {
+  background: var(--color-primario);
+  color: white;
+  border: none;
+  padding: 0.8rem 1.6rem;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.boton:hover {
+  opacity: 0.85;
+}
+
+.flecha {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 3;
+  background: var(--color-fondo);
+  color: var(--color-primario);
+  border: none;
+  font-size: 1.8rem;
+  width: 2.6rem;
+  height: 2.6rem;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.izquierda { left: 1rem; }
+.derecha { right: 1rem; }
+
+.puntos {
+  position: absolute;
+  bottom: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 3;
+  display: flex;
+  gap: 0.5rem;
+}
+
+.punto {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+  padding: 0;
+}
+
+.punto.activo {
+  background: var(--color-primario);
+}

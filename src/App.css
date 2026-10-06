@@ -1,0 +1,43 @@
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: sans-serif;
+}
+
+.hero {
+  text-align: center;
+  min-height: 60vh;
+}
+
+.tarjetas {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+.tarjeta {
+  padding: 1.5rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+}
+
+.seccion {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 3rem 2rem;
+}
+
+.seccion-cabecera {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.seccion-cabecera a {
+  color: var(--color-primario);
+  text-decoration: none;
+  font-weight: 600;
+}
