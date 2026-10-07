@@ -20,6 +20,9 @@
   --color-imagen: #efedf8;
   --velo: 246, 245, 251;
   --radio: 16px;
+  --sombra-suave: 0 2px 8px rgba(20, 20, 50, 0.08), 0 8px 24px rgba(20, 20, 50, 0.08);
+  --sombra-media: 0 4px 12px rgba(20, 20, 50, 0.1), 0 16px 40px rgba(20, 20, 50, 0.14);
+  --sombra-header: 0 2px 12px rgba(20, 20, 50, 0.1);
 }
 
 /* ===== MODO OSCURO ===== */
@@ -43,6 +46,9 @@
   --color-precio: #f59a85;
   --color-imagen: #1c1f38;
   --velo: 11, 13, 23;
+  --sombra-suave: 0 2px 8px rgba(0, 0, 0, 0.35), 0 8px 24px rgba(0, 0, 0, 0.35);
+  --sombra-media: 0 4px 12px rgba(0, 0, 0, 0.4), 0 16px 40px rgba(0, 0, 0, 0.5);
+  --sombra-header: 0 2px 12px rgba(0, 0, 0, 0.5);
 }
 
 body {

@@ -54,7 +54,6 @@
   height: 150px;
   margin-bottom: 1rem;
   border-radius: 12px;
-  background: var(--color-imagen);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -113,16 +112,6 @@
 
 .flecha-carrusel:hover {
   background: rgba(77, 163, 255, 0.15);
-}
-
-.volver {
-  background: var(--color-primario);
-  color: var(--color-sobre-primario);
-  border: none;
-  padding: 0.7rem 1.4rem;
-  border-radius: 10px;
-  font-weight: 600;
-  cursor: pointer;
 }
 
 /* Pantallas chicas: tarjetas más juntas y angostas */

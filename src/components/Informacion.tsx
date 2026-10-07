@@ -11,12 +11,12 @@ type Item = {
 
 // Para que se vean 5 distintas, necesitas 5 o más
 const items: Item[] = [
-  { id: 1, titulo: 'Soporte ilimitado', texto: 'Recibe soporte técnico y asesorías ilimitadas sin costo adicional a través de correo electrónico, teléfono y chat en vivo. Capacitaciones periódicas de las mejoras en el software.' },
-  { id: 2, titulo: 'Software que cumple con el SRI', texto: 'Estarás actualizado con las normativas del SRI, permitiendo que tu contabilidad y facturación esté alineada con las regulaciones fiscales más recientes.' },
-  { id: 3, titulo: 'Tu información siempre disponible y segura', texto: 'Los datos se almacenan automáticamente en línea, para que accedas cuando y donde quieras. Garantizamos la seguridad y confidencialidad de tus datos.' },
-  { id: 4, titulo: 'Intuitivo y rápido de usar', texto: 'Siigo Contífico te permite implementar rápidamente tu gestión administrativa y contable, trabajar desde una interfaz intuitiva y acceder a mejoras continuas sin afectar la operación de tu negocio.' },
-  { id: 5, titulo: 'Planes que se ajustan a tus necesidades', texto: 'El software en la nube de Siigo Contífico se adapta a tu presupuesto, eliminando la necesidad de gastar en licencias. Democratizamos la tecnología al emprendedor, mipymes y pymes.' },
-  { id: 6, titulo: 'Facturación electrónica', texto: 'Emite facturas electrónicas en Ecuador con solo unos clics desde cualquier lugar. Con Siigo Contífico, agilizas tus ventas, trabajas 100% en la nube y mantienes tu facturación alineada con los requisitos del SRI.' },
+  { id: 1, titulo: 'Soporte ilimitado', texto: 'Recibe soporte técnico y asesorías ilimitadas sin costo adicional a través de correo electrónico, teléfono y chat en vivo. Capacitaciones periódicas de las mejoras en el software.', imagen: 'https://cdn-icons-png.flaticon.com/512/9375/9375318.png'},
+  { id: 2, titulo: 'Software que cumple con el SRI', texto: 'Estarás actualizado con las normativas del SRI, permitiendo que tu contabilidad y facturación esté alineada con las regulaciones fiscales más recientes.', imagen: 'https://taxstrategy.com.ec/wp-content/uploads/2021/01/unnamed.jpg' },
+  { id: 3, titulo: 'Tu información siempre disponible y segura', texto: 'Los datos se almacenan automáticamente en línea, para que accedas cuando y donde quieras. Garantizamos la seguridad y confidencialidad de tus datos.', imagen: 'https://taxstrategy.com.ec/wp-content/uploads/2021/01/unnamed.jpg' },
+  { id: 4, titulo: 'Intuitivo y rápido de usar', texto: 'Siigo Contífico te permite implementar rápidamente tu gestión administrativa y contable, trabajar desde una interfaz intuitiva y acceder a mejoras continuas sin afectar la operación de tu negocio.', imagen: 'https://taxstrategy.com.ec/wp-content/uploads/2021/01/unnamed.jpg' },
+  { id: 5, titulo: 'Planes que se ajustan a tus necesidades', texto: 'El software en la nube de Siigo Contífico se adapta a tu presupuesto, eliminando la necesidad de gastar en licencias. Democratizamos la tecnología al emprendedor, mipymes y pymes.', imagen: 'https://taxstrategy.com.ec/wp-content/uploads/2021/01/unnamed.jpg' },
+  { id: 6, titulo: 'Facturación electrónica', texto: 'Emite facturas electrónicas en Ecuador con solo unos clics desde cualquier lugar. Con Siigo Contífico, agilizas tus ventas, trabajas 100% en la nube y mantienes tu facturación alineada con los requisitos del SRI.', imagen: 'https://taxstrategy.com.ec/wp-content/uploads/2021/01/unnamed.jpg' },
 ]
 
 function Informacion() {
