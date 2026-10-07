@@ -63,7 +63,9 @@ function Navbar() {
             >
               {tema === 'dark' ? <Moon size={18} /> : <Sun size={18} />}
             </button>
-            <Link to="/login" className="boton-entrar">Registrarse</Link>
+            <a href="https://zentrall.argsoft.tech/registro" className="boton-entrar" target="_blank" rel="noopener noreferrer" onClick={cerrar}>
+              Registrarse
+            </a>
           </div>
         </div>
       </header>
@@ -91,10 +93,6 @@ function Navbar() {
             </li>
           ))}
         </ul>
-
-        <Link to="/login" className="boton-entrar sidebar-entrar" onClick={cerrar}>
-          Registrarse
-        </Link>
       </aside>
     </>
   )

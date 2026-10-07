@@ -1,9 +1,8 @@
+
 function Login() {
+  window.location.href = 'https://zentrall.argsoft.tech/registro'
   return (
-    <section className="seccion">
-      <h2>Acceso para empresas</h2>
-      <p>Aquí iniciarán sesión las tiendas registradas.</p>
-    </section>
+    <p>redirigiendo...</p>
   )
 }
 

@@ -1,0 +1,144 @@
+.informacion {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 3rem 1rem;
+  text-align: center;
+}
+
+.carrusel {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 2rem 0;
+}
+
+.escenario {
+  --sep: 240px;            /* separación horizontal entre tarjetas */
+  position: relative;
+  flex: 1;
+  height: 500px;
+  perspective: 1200px;     /* da la profundidad 3D */
+  overflow: hidden;
+}
+
+.info-tarjeta {
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  width: 250px;
+  height: 430px;
+  margin-left: -125px;
+  padding: 1.2rem;
+  border-radius: 18px;
+  border: 1px solid var(--color-borde);
+  background: linear-gradient(160deg, var(--color-circulo), var(--color-superficie));
+  color: var(--color-texto);
+  cursor: pointer;
+
+  transform:
+    translateX(calc(var(--d) * var(--sep)))
+    translateY(calc(var(--abs) * 6px))
+    translateZ(calc(var(--abs) * -120px))
+    rotateY(calc(var(--d) * 20deg));
+
+  transition: transform 0.5s ease, opacity 0.5s ease, box-shadow 0.5s ease;
+}
+
+.info-tarjeta.centro {
+  box-shadow: 0 0 28px rgba(77, 163, 255, 0.35);
+  border-color: #4da3ff;
+  cursor: default;
+}
+
+.info-imagen {
+  height: 150px;
+  margin-bottom: 1rem;
+  border-radius: 12px;
+  background: var(--color-imagen);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.info-imagen img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.info-tarjeta h3 {
+  margin: 0 0 0.6rem;
+  font-size: 1.4rem;
+}
+
+.info-linea {
+  display: block;
+  width: 60px;
+  height: 2px;
+  margin: 0 auto 0.8rem;
+  background: #4da3ff;
+}
+
+.info-tarjeta p {
+  margin: 0 0 1rem;
+  font-size: 0.9rem;
+  line-height: 1.4;
+  color: var(--color-texto-suave);
+}
+
+.info-boton {
+  background: transparent;
+  border: 1px solid #4da3ff;
+  color: var(--color-texto);
+  padding: 0.4rem 1rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.flecha-carrusel {
+  flex-shrink: 0;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid #4da3ff;
+  background: transparent;
+  color: var(--color-texto);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.flecha-carrusel:hover {
+  background: rgba(77, 163, 255, 0.15);
+}
+
+.volver {
+  background: var(--color-primario);
+  color: var(--color-sobre-primario);
+  border: none;
+  padding: 0.7rem 1.4rem;
+  border-radius: 10px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* Pantallas chicas: tarjetas más juntas y angostas */
+@media (max-width: 768px) {
+  .escenario {
+    --sep: 90px;
+    height: 400px;
+  }
+
+  .info-tarjeta {
+    width: 200px;
+    margin-left: -100px;
+  }
+
+  .flecha-carrusel {
+    width: 36px;
+    height: 36px;
+  }
+}
