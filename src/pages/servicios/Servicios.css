@@ -1,32 +1,120 @@
+.servicios {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 4rem 1.5rem;
+}
+
+/* ===== Encabezado centrado ===== */
+.servicios-hero {
+  text-align: center;
+  margin-bottom: 3.5rem;
+}
+
+.servicios-hero h2 {
+  margin: 0;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-style: italic;
+  font-weight: 700;
+  font-size: clamp(2.2rem, 6vw, 3.5rem);
+  line-height: 1.1;
+  color: var(--color-texto);
+}
+
+.servicios-ola {
+  display: block;
+  width: 90px;
+  margin: 1.2rem auto 0;
+  color: var(--color-activo-texto);
+}
+
+/* ===== Cuadrícula de servicios ===== */
 .lista-servicios {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 1rem;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 2.5rem 1rem;
 }
 
 .servicio {
   display: flex;
-  gap: 1rem;
-  background: var(--color-tarjeta);
-  padding: 1rem;
-  border-radius: 12px;
-  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.08);
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  cursor: default;
 }
 
-.servicio-avatar {
-  flex-shrink: 0;
-  width: 56px;
-  height: 56px;
-  border-radius: 50%;
-  background: var(--color-acento);
-  color: var(--color-primario);
-  font-size: 1.5rem;
-  font-weight: bold;
+/* Recuadro del icono */
+.servicio-icono {
+  width: 84px;
+  height: 84px;
+  border-radius: 100px;
+  border: 1px solid var(--color-borde);
+  background: linear-gradient(160deg, var(--color-circulo), var(--color-superficie));
+  box-shadow: var(--sombra-suave);
   display: flex;
   align-items: center;
   justify-content: center;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-style: italic;
+  font-weight: 700;
+  font-size: 2.2rem;
+  color: var(--color-activo-texto);
+  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
 }
 
-.servicio h3 { margin: 0 0 0.3rem; }
-.servicio p { margin: 0 0 0.4rem; }
-.servicio small { color: #777; }
+.servicio-icono img {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+}
+
+.servicio:hover .servicio-icono {
+  transform: translateY(-4px);
+  border-color: #4da3ff;
+  box-shadow: 0 0 20px rgba(77, 163, 255, 0.3);
+}
+
+/* Textos */
+.servicio h3 {
+  margin: 0.9rem 0 0.3rem;
+  font-size: 0.95rem;
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--color-texto);
+}
+
+.servicio p {
+  margin: 0 0 0.4rem;
+  font-size: 0.8rem;
+  line-height: 1.4;
+  color: var(--color-texto-suave);
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.servicio small {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-activo-texto);
+}
+
+/* ===== Móvil ===== */
+@media (max-width: 768px) {
+  .servicios {
+    padding: 2.5rem 1rem;
+  }
+
+  .lista-servicios {
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 2rem 0.75rem;
+  }
+
+  .servicio-icono {
+    width: 72px;
+    height: 72px;
+    font-size: 1.9rem;
+  }
+}

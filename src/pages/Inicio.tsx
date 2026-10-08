@@ -1,14 +1,12 @@
 import Slideshow from '../components/Slideshow'
 import Categorias from '../components/Categorias'
 import Tarjetas from '../components/Tarjetas'
-import Buscador from '../components/Buscador'
 import Informacion from '../components/Informacion'
 import { planes} from '../data/Planes'
 
 function Inicio() {
   return (
     <>
-      <Buscador />
       <Slideshow />
       <Categorias />
       <br/>

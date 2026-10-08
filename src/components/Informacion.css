@@ -6,6 +6,7 @@
 }
 
 .carrusel {
+  position: relative;
   display: flex;
   align-items: center;
   gap: 0.5rem;
@@ -13,29 +14,38 @@
 }
 
 .escenario {
-  --sep: 240px;            /* separación horizontal entre tarjetas */
+  --sep: 240px;
   position: relative;
   flex: 1;
-  height: 500px;
-  perspective: 1200px;     /* da la profundidad 3D */
+  height: 580px;          /* antes 500px */
+  perspective: 1200px;
   overflow: hidden;
 }
 
 .info-tarjeta {
+  box-sizing: border-box;
   position: absolute;
   top: 20px;
   left: 50%;
   width: 250px;
-  height: 430px;
-  margin-left: -125px;
+  height: 510px;
   padding: 1.2rem;
+  display: flex;
+  flex-direction: column;
   border-radius: 18px;
   border: 1px solid var(--color-borde);
   background: linear-gradient(160deg, var(--color-circulo), var(--color-superficie));
   color: var(--color-texto);
   cursor: pointer;
+  box-shadow: var(--sombra-suave);
 
+  /* Visibilidad según la distancia al centro */
+  opacity: 0;
+  pointer-events: none;
+
+  /* -50% centra la tarjeta; luego se mueve, se aleja y se gira */
   transform:
+    translateX(-50%)
     translateX(calc(var(--d) * var(--sep)))
     translateY(calc(var(--abs) * 6px))
     translateZ(calc(var(--abs) * -120px))
@@ -44,13 +54,18 @@
   transition: transform 0.5s ease, opacity 0.5s ease, box-shadow 0.5s ease;
 }
 
+.info-tarjeta.abs-0 { opacity: 1;   pointer-events: auto; }
+.info-tarjeta.abs-1 { opacity: 0.9; pointer-events: auto; }
+.info-tarjeta.abs-2 { opacity: 0.6; pointer-events: auto; }
+
 .info-tarjeta.centro {
-  box-shadow: 0 0 28px rgba(77, 163, 255, 0.35);
+  box-shadow: 0 0 28px rgba(77, 163, 255, 0.35), var(--sombra-media);
   border-color: #4da3ff;
   cursor: default;
 }
 
 .info-imagen {
+  flex-shrink: 0;
   height: 150px;
   margin-bottom: 1rem;
   border-radius: 12px;
@@ -68,32 +83,57 @@
 
 .info-tarjeta h3 {
   margin: 0 0 0.6rem;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-style: italic;
+  font-weight: 700;
   font-size: 1.4rem;
+  line-height: 1.15;
+  color: var(--color-activo-texto);
 }
 
-.info-linea {
+.info-ola {
+  flex-shrink: 0;
   display: block;
-  width: 60px;
-  height: 2px;
-  margin: 0 auto 0.8rem;
-  background: #4da3ff;
+  width: 70px;
+  height: 10px;
+  margin: 0 auto 0.9rem;
+  color: var(--color-activo-texto);
 }
 
 .info-tarjeta p {
+  flex: 1;
+  min-height: 0;
   margin: 0 0 1rem;
+  overflow-y: auto;
+  scrollbar-width: none;
   font-size: 0.9rem;
   line-height: 1.4;
   color: var(--color-texto-suave);
 }
 
+.info-tarjeta p::-webkit-scrollbar {
+  display: none;
+}
+
 .info-boton {
+  flex-shrink: 0;
+  align-self: center;
   background: transparent;
-  border: 1px solid #4da3ff;
-  color: var(--color-texto);
-  padding: 0.4rem 1rem;
+  border: 1.5px solid var(--color-activo-texto);
+  color: var(--color-activo-texto);
+  padding: 0.55rem 1.6rem;
+  border-radius: 999px;
   font-size: 0.75rem;
   font-weight: 700;
+  letter-spacing: 0.08em;
   cursor: pointer;
+  box-shadow: none;
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.info-boton:hover {
+  background: var(--color-activo-fondo);
+  transform: translateY(-2px);
 }
 
 .flecha-carrusel {
@@ -108,26 +148,55 @@
   align-items: center;
   justify-content: center;
   cursor: pointer;
+  box-shadow: var(--sombra-suave);
 }
 
 .flecha-carrusel:hover {
   background: rgba(77, 163, 255, 0.15);
 }
 
-/* Pantallas chicas: tarjetas más juntas y angostas */
+/* ===== Móvil ===== */
 @media (max-width: 768px) {
+  .informacion {
+    padding: 2rem 0.5rem;
+  }
+
   .escenario {
-    --sep: 90px;
-    height: 400px;
+    --sep: 125px;
+    height: 640px;          /* antes 540px */
   }
 
   .info-tarjeta {
-    width: 200px;
-    margin-left: -100px;
+    width: 220px;
+    height: 570px;          /* antes 490px */
+    padding: 1rem;
   }
 
+  /* Solo se ven 3 tarjetas */
+  .info-tarjeta.abs-2 {
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .info-imagen {
+    height: 110px;
+  }
+
+  .info-tarjeta h3 {
+    font-size: 1.15rem;
+  }
+
+  /* Las flechas flotan sobre el carrusel para no quitarle ancho */
   .flecha-carrusel {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 30;
     width: 36px;
     height: 36px;
+    background: var(--color-superficie);
   }
+
+  .flecha-carrusel:first-child { left: 0.25rem; }
+  .flecha-carrusel:last-child  { right: 0.25rem; }
 }

@@ -5,6 +5,9 @@ import logo from '../assets/zentrall-isotipo.svg'
 import { useTema } from '../hooks/useTema'
 import './Navbar.css'
 
+const URL_REGISTRO = 'https://zentrall.argsoft.tech/registro'
+const URL_LOGIN = 'https://zentrall.argsoft.tech/login' // ajusta si tu ruta es otra
+
 const enlaces = [
   { nombre: 'Inicio', ruta: '/', icono: House },
   { nombre: 'Servicios', ruta: '/servicios', icono: HandPlatter },
@@ -44,10 +47,9 @@ function Navbar() {
 
           <nav className="menu">
             <ul>
-              {enlaces.map(({ nombre, ruta, icono: Icono }) => (
+              {enlaces.map(({ nombre, ruta }) => (
                 <li key={ruta}>
                   <NavLink to={ruta} end={ruta === '/'}>
-                    <Icono size={16} />
                     {nombre}
                   </NavLink>
                 </li>
@@ -63,7 +65,20 @@ function Navbar() {
             >
               {tema === 'dark' ? <Moon size={18} /> : <Sun size={18} />}
             </button>
-            <a href="https://zentrall.argsoft.tech/registro" className="boton-entrar" target="_blank" rel="noopener noreferrer" onClick={cerrar}>
+            <a
+              href={URL_LOGIN}
+              className="enlace-login"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Iniciar sesión
+            </a>
+            <a
+              href={URL_REGISTRO}
+              className="boton-entrar"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               Registrarse
             </a>
           </div>
@@ -93,6 +108,27 @@ function Navbar() {
             </li>
           ))}
         </ul>
+
+        <div className="sidebar-entrar">
+          <a
+            href={URL_LOGIN}
+            className="enlace-login"
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={cerrar}
+          >
+            Iniciar sesión
+          </a>
+          <a
+            href={URL_REGISTRO}
+            className="boton-entrar"
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={cerrar}
+          >
+            Registrarse
+          </a>
+        </div>
       </aside>
     </>
   )

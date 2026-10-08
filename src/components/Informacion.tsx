@@ -45,21 +45,12 @@ function Informacion() {
           {items.map((it, i) => {
             const d = distancia(i)
             const abs = Math.abs(d)
-            const visible = abs <= 2
 
             return (
               <article
                 key={it.id}
-                className={`info-tarjeta ${d === 0 ? 'centro' : ''}`}
-                style={
-                  {
-                    '--d': d,
-                    '--abs': abs,
-                    opacity: !visible ? 0 : abs === 0 ? 1 : abs === 1 ? 0.9 : 0.6,
-                    zIndex: 10 - abs,
-                    pointerEvents: visible ? 'auto' : 'none',
-                  } as React.CSSProperties
-                }
+                className={`info-tarjeta abs-${abs} ${d === 0 ? 'centro' : ''}`}
+                style={{ '--d': d, '--abs': abs, zIndex: 10 - abs } as React.CSSProperties}
                 onClick={() => setIndice(i)}
               >
                 {/* Espacio de la imagen */}
@@ -69,7 +60,15 @@ function Informacion() {
 
                 {/* Espacio del texto */}
                 <h3>{it.titulo}</h3>
-                <span className="info-linea" />
+                <svg className="info-ola" viewBox="0 0 160 14" aria-hidden="true">
+                  <path
+                    d="M2,7 C12,0 22,0 32,7 C42,14 52,14 62,7 C72,0 82,0 92,7 C102,14 112,14 122,7 C132,0 142,0 158,7"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="3"
+                    strokeLinecap="round"
+                  />
+                </svg>
                 <p>{it.texto}</p>
                 <button className="info-boton">VER MÁS</button>
               </article>

@@ -10,6 +10,11 @@
   isolation: isolate;
 
   background: var(--color-fondo);
+  transition: box-shadow 0.3s ease;
+}
+
+.slideshow:hover{
+  box-shadow: var(--sombra-suave);
 }
 
 
@@ -22,8 +27,10 @@
   inset: 0;
 
   opacity: 0;
+  visibility: hidden;        /* nuevo */
+  pointer-events: none;      /* nuevo */
 
-  transition: opacity 0.8s ease;
+  transition: opacity 0.8s ease, visibility 0.8s;   /* se agregó visibility */
 
   display: flex;
   align-items: center;
@@ -35,8 +42,10 @@
 
 .slide.activa {
   opacity: 1;
+  visibility: visible;       /* nuevo */
+  pointer-events: auto;      /* nuevo */
+  z-index: 2;                /* nuevo: la activa siempre arriba */
 }
-
 
 /* =========================================
    IMAGEN
@@ -97,7 +106,7 @@
   top: 0;
   left: 0;
 
-  width: 62%;
+  width: 70%;
   height: 100%;
 
   z-index: 2;
@@ -172,11 +181,12 @@
   max-width: 420px;
 
   padding: 0 4rem;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.18);
 }
 
 .slide-texto h1 {
   font-size: 2.8rem;
-
+  
   line-height: 1.1;
 
   margin: 0 0 1rem;
@@ -190,6 +200,13 @@
   line-height: 1.5;
 }
 
+.slide-texto h1 {
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.48);
+}
+
+.slide-texto p {
+  text-shadow: 0 1px 5px rgba(0, 0, 0, 0.7);
+}
 
 /* =========================================
    BOTÓN
@@ -210,6 +227,7 @@
 
   cursor: pointer;
 
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.68);;
   transition:
     transform .25s ease,
     opacity .25s ease;
