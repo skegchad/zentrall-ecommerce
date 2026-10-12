@@ -1,0 +1,214 @@
+.servicios {
+  width: 100%;
+  min-width: 0;
+  color: var(--admin-texto);
+  box-sizing: border-box;
+}
+
+.servicios__encabezado {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-bottom: 24px;
+}
+
+.servicios__encabezado h1 {
+  margin: 0;
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.servicios__acciones {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.servicios .btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 18px;
+  border: 1px solid var(--admin-borde);
+  border-radius: 9px;
+  background: var(--admin-superficie);
+  font: inherit;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--admin-texto);
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s;
+}
+.servicios .btn:hover { border-color: var(--admin-primario); }
+.servicios .btn:focus-visible,
+.servicios .operaciones button:focus-visible {
+  outline: 2px solid var(--admin-primario);
+  outline-offset: 2px;
+}
+
+.servicios .btn--primario {
+  background: var(--admin-primario);
+  border-color: var(--admin-primario);
+  color: var(--admin-sobre-primario);
+}
+.servicios .btn--primario:hover { filter: brightness(1.08); }
+
+.servicios__lado {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.servicios__totales {
+  margin: 0;
+  font-size: 0.9rem;
+  line-height: 1.7;
+  text-align: right;
+  color: var(--admin-texto-suave);
+}
+.servicios__totales strong { color: var(--admin-texto); }
+.servicios__filtro {
+  min-width: 150px;
+  height: 44px;
+  padding: 0 14px;
+  border: 1px solid var(--admin-borde);
+  border-radius: 9px;
+  background: var(--admin-superficie);
+  font: inherit;
+  font-size: 0.95rem;
+  color: var(--admin-texto);
+}
+.servicios__filtro:focus-visible {
+  outline: 2px solid var(--admin-primario);
+  outline-offset: 2px;
+}
+
+/* ---------- Tabla ---------- */
+.servicios__tarjeta {
+  width: 100%;
+  box-sizing: border-box;
+  background: var(--admin-superficie);
+  border: 1px solid var(--admin-borde);
+  border-radius: 14px;
+  box-shadow: var(--sombra);
+  padding: 12px 20px 16px;
+}
+
+.servicios__scroll {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.servicios__tabla {
+  width: 100%;
+  min-width: 560px;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+}
+
+.servicios__tabla th {
+  padding: 17px 14px;
+  text-align: left;
+  font-weight: 600;
+  color: var(--admin-texto-suave);
+  white-space: nowrap;
+}
+.servicios__tabla th.centro { text-align: center; }
+
+.servicios__tabla td {
+  padding: 18px 14px;
+  border-top: 1px solid var(--admin-borde);
+  vertical-align: middle;
+}
+
+.servicios__tabla tbody tr {
+  transition: background 0.15s;
+}
+
+.servicios__tabla tbody tr:hover {
+  background: var(--admin-primario-suave);
+}
+
+.servicio {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.servicio strong {
+  display: block;
+  font-size: 1rem;
+}
+
+.servicio small {
+  font-size: 0.875rem;
+  color: var(--admin-texto-suave);
+}
+
+.servicio__inicial {
+  width: 44px;
+  height: 44px;
+  flex: none;
+  display: grid;
+  place-items: center;
+  border-radius: 12px;
+  background: linear-gradient(
+    135deg,
+    var(--admin-grad-b),
+    var(--admin-grad-a)
+  );
+  color: #ffffff;
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+/* ---------- Categoría ---------- */
+.servicios__categoria {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 999px;
+  background: var(--admin-primario-suave);
+  color: var(--admin-primario);
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+/* ---------- Operaciones ---------- */
+.servicios .operaciones {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+}
+
+.servicios .operaciones button {
+  display: grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  border: 0;
+  border-radius: 9px;
+  background: transparent;
+  color: var(--admin-primario);
+  cursor: pointer;
+}
+
+.servicios .operaciones button:hover {
+  background: var(--admin-primario-suave);
+}
+.servicios .operaciones .peligro { color: var(--admin-peligro); }
+.servicios .operaciones .peligro:hover {
+  background: color-mix(in srgb, var(--admin-peligro) 14%, transparent);
+}
+
+.servicios .vacio {
+  padding: 32px 10px;
+  text-align: center;
+  color: var(--admin-texto-suave);
+}
+
+@media (max-width: 720px) {
+  .servicios { padding: 16px; }
+  .servicios__lado { margin-left: 0; width: 100%; justify-content: space-between; }
+}

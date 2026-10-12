@@ -13,9 +13,54 @@
   transition: box-shadow 0.3s ease;
 }
 
-.slideshow:hover{
+
+/* Glow dinámico según la diapositiva activa: modo oscuro */
+:root[data-tema="dark"] .slideshow:hover:has(
+  .slide.activa[data-glow="azul"]
+) {
+  box-shadow:
+    0 0 12px rgba(65, 130, 255, 0.45),
+    0 0 32px rgba(65, 130, 255, 0.30),
+    0 0 60px rgba(65, 130, 255, 0.16);
+}
+
+:root[data-tema="dark"] .slideshow:hover:has(
+  .slide.activa[data-glow="rojo"]
+) {
+  box-shadow:
+    0 0 12px rgba(255, 75, 95, 0.45),
+    0 0 32px rgba(255, 75, 95, 0.30),
+    0 0 60px rgba(255, 75, 95, 0.16);
+}
+
+:root[data-tema="dark"] .slideshow:hover:has(
+  .slide.activa[data-glow="verde"]
+) {
+  box-shadow:
+    0 0 12px rgba(50, 220, 150, 0.45),
+    0 0 32px rgba(50, 220, 150, 0.30),
+    0 0 60px rgba(50, 220, 150, 0.16);
+}
+
+:root[data-tema="dark"] .slideshow:hover:has(
+  .slide.activa[data-glow="morado"]
+) {
+  box-shadow:
+    0 0 12px rgba(160, 100, 255, 0.45),
+    0 0 32px rgba(160, 100, 255, 0.30),
+    0 0 60px rgba(160, 100, 255, 0.16);
+}
+
+/* Modo claro: conservar la sombra original */
+:root[data-tema="light"] .slideshow:hover {
   box-shadow: var(--sombra-suave);
 }
+
+/* Transición suave */
+.slideshow {
+  transition: box-shadow 0.4s ease;
+}
+
 
 
 /* =========================================
@@ -95,10 +140,6 @@
 
   pointer-events: none;
 }
-
-/* =========================================
-   MAREA LÍQUIDA
-   ========================================= */
 
 .marea {
   position: absolute;

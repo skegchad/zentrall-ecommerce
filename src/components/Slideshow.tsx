@@ -56,7 +56,7 @@ function Slideshow() {
 
     {slides.map((s, i) => (<div
       key={s.titulo}
-      className={`slide ${i === indice ? 'activa' : ''}`}
+      className={`slide ${i === indice ? 'activa' : ''}` } data-glow="azul"
     >
       <div
         className="slide-fondo"

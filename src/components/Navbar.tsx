@@ -6,7 +6,7 @@ import { useTema } from '../hooks/useTema'
 import './Navbar.css'
 
 const URL_REGISTRO = 'https://zentrall.argsoft.tech/registro'
-const URL_LOGIN = 'https://zentrall.argsoft.tech/login' // ajusta si tu ruta es otra
+const URL_LOGIN = 'http://localhost:5173/admin'
 
 const enlaces = [
   { nombre: 'Inicio', ruta: '/', icono: House },
