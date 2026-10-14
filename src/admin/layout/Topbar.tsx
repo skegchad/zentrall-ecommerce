@@ -57,8 +57,8 @@ export default function Topbar({
       </button>
 
       <div className="adm-topbar__titulo">
-        <small>Panel</small>
-        <h1>{titulo}</h1>
+        <small style={{ fontFamily: "Georgia, 'Times New Roman', serif", fontSize: "20px", fontWeight: "1000", fontStyle: "italic" }}>Panel</small>
+        <h1 style={{ fontFamily: "Georgia, 'Times New Roman', serif", fontSize: "30px", fontWeight: "1000", fontStyle: "italic" }}>{titulo}</h1>
       </div>
 
       <div className="adm-topbar__acciones">

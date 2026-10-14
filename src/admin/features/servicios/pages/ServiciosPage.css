@@ -1,8 +1,16 @@
 .servicios {
+  position: relative;
+  isolation: isolate;
   width: 100%;
+  height: 100%;
   min-width: 0;
-  color: var(--admin-texto);
+  min-height: 0;
   box-sizing: border-box;
+  color: var(--admin-texto);
+
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
 }
 
 .servicios__encabezado {
@@ -10,7 +18,8 @@
   align-items: center;
   gap: 20px;
   flex-wrap: wrap;
-  margin-bottom: 24px;
+  margin-bottom: 12px;
+  flex: 0 0 auto;
 }
 
 .servicios__encabezado h1 {
@@ -88,17 +97,30 @@
 /* ---------- Tabla ---------- */
 .servicios__tarjeta {
   width: 100%;
+  flex: 1 1 0;
+  min-width: 0;
+  min-height: 0;
   box-sizing: border-box;
-  background: var(--admin-superficie);
+
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+
   border: 1px solid var(--admin-borde);
   border-radius: 14px;
   box-shadow: var(--sombra);
   padding: 12px 20px 16px;
+  background: color-mix(in srgb, var(--admin-superficie) 74%, transparent);
+  -webkit-backdrop-filter: blur(1.5px);
+  backdrop-filter: blur(1.5px);
 }
 
 .servicios__scroll {
   width: 100%;
-  overflow-x: auto;
+  max-width: 100%;
+  max-height: 60vh;
+  overflow: auto;
+  overscroll-behavior: contain;
 }
 
 .servicios__tabla {
@@ -211,4 +233,93 @@
 @media (max-width: 720px) {
   .servicios { padding: 16px; }
   .servicios__lado { margin-left: 0; width: 100%; justify-content: space-between; }
+}
+
+/* ============================================================
+   Círculo giratorio de fondo (estilo menú de Persona)
+   Mismo efecto que en Planes. Todo es decorativo.
+   ============================================================ */
+.servicios__fondo {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  overflow: hidden;
+}
+/* Caja cuadrada anclada a la derecha y centrada en vertical.
+   Su alto nunca supera el de la página, así no se corta ni crea scroll. */
+.servicios__orbe {
+  position: absolute;
+  top: 50%;
+  right: -40%;
+  width: min(85vw, 1000px);
+  aspect-ratio: 1;
+  transform: translateY(-50%);
+}
+.servicios__orbe::before {
+  content: "";
+  position: absolute;
+  inset: 20%;
+  border-radius: 50%;
+  box-shadow: 0 24px 50px color-mix(in srgb, var(--color-primario) 55%, transparent);
+}
+
+.servicios__orbe > * {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  will-change: transform;
+}
+
+/* Disco con barrido cónico: al girar se nota el movimiento */
+.servicios__disco {
+  inset: 20% !important;
+  width: auto !important;
+  height: auto !important;
+  border-radius: 50%;
+  background: conic-gradient(
+    from 0deg,
+    color-mix(in srgb, var(--color-primario) 85%, transparent),
+    color-mix(in srgb, var(--color-primario) 22%, transparent) 35%,
+    color-mix(in srgb, var(--color-primario) 50%, transparent) 65%,
+    color-mix(in srgb, var(--color-primario) 85%, transparent)
+  );
+  animation: servicios-girar 40s linear infinite;
+}
+.servicios__disco::after { /* círculo interior para dar profundidad */
+  content: "";
+  position: absolute;
+  inset: 22%;
+  border-radius: 50%;
+  background: color-mix(in srgb, var(--color-primario) 26%, transparent);
+  border: 2px solid color-mix(in srgb, var(--color-primario) 70%, transparent);
+}
+
+.servicios__aro--texto {
+  animation: servicios-girar 55s linear infinite;
+}
+.servicios__aro--texto text {
+  fill: var(--color-primario);
+  opacity: 0.9;
+  font-size: 26px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+}
+
+@keyframes servicios-girar {
+  to { transform: rotate(360deg); }
+}
+
+@media (max-width: 720px) {
+  .servicios__orbe {
+    right: -48%;
+    width: 90vw;
+  }
+}
+
+/* Quien prefiere menos movimiento ve el círculo quieto */
+@media (prefers-reduced-motion: reduce) {
+  .servicios__disco,
+  .servicios__aro--texto { animation: none; }
 }

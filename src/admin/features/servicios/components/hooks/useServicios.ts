@@ -1,12 +1,13 @@
-import { useState } from 'react'
 import { servicios as serviciosData } from '../../../../../data/Servicios'
+import { crearStore } from '../../../../shared/crearStore'
 import type { Servicio } from '../types/servicios.types'
 
+// Un solo almacén para toda la app: el listado y CreatePage comparten los datos
+const store = crearStore<Servicio>(serviciosData)
+
 export function useServicios() {
-  const [servicios, setServicios] = useState<Servicio[]>(serviciosData)
+  const servicios = store.useLista()
+  const { crear, actualizar, eliminar } = store
 
-  // Solo quita el servicio de la lista en pantalla; no modifica src/data/Servicios.tsx
-  const eliminar = (id: number) => setServicios((prev) => prev.filter((s) => s.id !== id))
-
-  return { servicios, eliminar }
+  return { servicios, crear, actualizar, eliminar }
 }

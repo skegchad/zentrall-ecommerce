@@ -1,0 +1,407 @@
+/* ============================================================
+   Página y formulario del admin (crear / editar), compartido por
+   Planes y Servicios.
+   Estilo: bloques con título y barra morada, campos con ícono,
+   aro de foco con el color primario.
+   ============================================================ */
+
+/* ---------- Página ---------- */
+.adm-form-pagina {
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+  color: var(--admin-texto);
+}
+/* Formulario a la izquierda, banda decorativa a la derecha */
+.adm-form-pagina__cuerpo {
+  display: flex;
+  align-items: flex-start;
+  gap: 24px;
+}
+.adm-form-pagina__principal {
+  flex: 1 1 0;
+  min-width: 0;
+  max-width: 980px;
+}
+
+.adm-form-pagina__cabecera { margin-bottom: 18px; }
+
+.adm-form-pagina__volver {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 10px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--admin-texto-suave);
+  text-decoration: none;
+}
+.adm-form-pagina__volver:hover { color: var(--admin-primario); }
+.adm-form-pagina__volver:focus-visible {
+  outline: 2px solid var(--admin-primario);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+.adm-form-pagina .adm-form-pagina__titulo {
+  margin: 0;
+  font-size: 2rem;
+  font-weight: 700;
+}
+.adm-form-pagina__sub {
+  margin: 6px 0 0;
+  font-size: 0.95rem;
+  color: var(--admin-texto-suave);
+}
+
+/* ---------- Tarjeta del formulario ---------- */
+.adm-form {
+  box-sizing: border-box;
+  padding: 28px;
+  border: 1px solid var(--admin-borde);
+  border-radius: 16px;
+  box-shadow: var(--sombra);
+  background: color-mix(in srgb, var(--admin-superficie) 80%, transparent);
+  -webkit-backdrop-filter: blur(1.5px);
+  backdrop-filter: blur(1.5px);
+}
+
+.adm-form__rejilla {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 28px 32px;
+}
+.adm-form__bloque { min-width: 0; }
+.adm-form__bloque--ancho { grid-column: 1 / -1; }
+
+/* Título con barra morada a la izquierda */
+.adm-form .adm-form__titulo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0 0 14px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  line-height: 1.2;
+}
+.adm-form .adm-form__titulo::before {
+  content: "";
+  width: 3px;
+  height: 20px;
+  border-radius: 3px;
+  background: linear-gradient(180deg, var(--admin-grad-c), var(--admin-grad-b));
+}
+
+.adm-form__etiqueta {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--admin-texto);
+}
+.adm-form__etiqueta span { color: var(--admin-rosa); margin-left: 2px; }
+
+/* ---------- Campo con ícono ---------- */
+.adm-form__control {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  height: 46px;
+  padding: 0 14px;
+  border: 1px solid var(--admin-borde);
+  border-radius: 12px;
+  background: var(--admin-superficie);
+  color: var(--admin-texto-suave);
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+.adm-form__control svg { flex-shrink: 0; }
+.adm-form__control:hover { border-color: color-mix(in srgb, var(--admin-primario) 45%, var(--admin-borde)); }
+.adm-form__control:focus-within {
+  border-color: var(--admin-primario);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--admin-primario) 22%, transparent);
+}
+.adm-form__control--error,
+.adm-form__control--error:hover { border-color: var(--admin-peligro); }
+.adm-form__control--error:focus-within {
+  border-color: var(--admin-peligro);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--admin-peligro) 22%, transparent);
+}
+
+.adm-form__control input {
+  flex: 1;
+  min-width: 0;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  color: var(--admin-texto);
+  font: inherit;
+  font-size: 0.92rem;
+}
+.adm-form__control input::placeholder,
+.adm-form__area::placeholder { color: var(--admin-texto-suave); opacity: 0.75; }
+
+/* Sin flechitas en el campo numérico */
+.adm-form__control input[type="number"] { appearance: textfield; -moz-appearance: textfield; }
+.adm-form__control input[type="number"]::-webkit-outer-spin-button,
+.adm-form__control input[type="number"]::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+
+/* ---------- Área de texto ---------- */
+.adm-form__area {
+  display: block;
+  width: 100%;
+  min-height: 96px;
+  box-sizing: border-box;
+  padding: 12px 14px;
+  border: 1px solid var(--admin-borde);
+  border-radius: 12px;
+  background: var(--admin-superficie);
+  color: var(--admin-texto);
+  font: inherit;
+  font-size: 0.92rem;
+  line-height: 1.5;
+  resize: vertical;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+.adm-form__area:hover { border-color: color-mix(in srgb, var(--admin-primario) 45%, var(--admin-borde)); }
+.adm-form__area:focus {
+  outline: 0;
+  border-color: var(--admin-primario);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--admin-primario) 22%, transparent);
+}
+
+/* ---------- Estado (segmentado) ---------- */
+.adm-form__segmentado {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+}
+.adm-form__segmentado label { position: relative; display: block; cursor: pointer; }
+.adm-form__segmentado input {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  margin: 0;
+  cursor: pointer;
+}
+.adm-form__segmentado span {
+  display: grid;
+  place-items: center;
+  height: 46px;
+  border: 1px solid var(--admin-borde);
+  border-radius: 12px;
+  background: var(--admin-superficie);
+  color: var(--admin-texto-suave);
+  font-size: 0.92rem;
+  font-weight: 600;
+  transition: background 0.15s, border-color 0.15s, color 0.15s;
+}
+.adm-form__segmentado label:hover span { border-color: color-mix(in srgb, var(--admin-primario) 45%, var(--admin-borde)); }
+.adm-form__segmentado input:focus-visible + span {
+  outline: 2px solid var(--admin-primario);
+  outline-offset: 2px;
+}
+.adm-form__segmentado input:checked + span {
+  border-color: var(--admin-primario);
+  background: var(--admin-primario-suave);
+  color: var(--admin-primario);
+}
+
+/* ---------- Características (chips) ---------- */
+.adm-form__control--chips {
+  flex-wrap: wrap;
+  height: auto;
+  min-height: 46px;
+  padding: 7px 10px;
+  gap: 6px;
+}
+.adm-form__control--chips input { min-width: 140px; padding: 4px; }
+.adm-form__chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 6px 4px 10px;
+  border: 1px solid var(--admin-borde);
+  border-radius: 8px;
+  background: var(--admin-fondo);
+  color: var(--admin-texto);
+  font-size: 0.82rem;
+}
+.adm-form__chip button,
+.adm-form__agregar {
+  display: grid;
+  place-items: center;
+  border: 0;
+  background: transparent;
+  color: var(--admin-texto-suave);
+  cursor: pointer;
+}
+.adm-form__chip button { width: 20px; height: 20px; border-radius: 6px; }
+.adm-form__chip button:hover { background: color-mix(in srgb, var(--admin-peligro) 14%, transparent); color: var(--admin-peligro); }
+.adm-form__agregar { width: 30px; height: 30px; margin-left: auto; border-radius: 8px; }
+.adm-form__agregar:hover:not(:disabled) { background: var(--admin-primario-suave); color: var(--admin-primario); }
+.adm-form__agregar:disabled { opacity: 0.4; cursor: default; }
+.adm-form__chip button:focus-visible,
+.adm-form__agregar:focus-visible {
+  outline: 2px solid var(--admin-primario);
+  outline-offset: 1px;
+}
+
+/* ---------- Mensajes ---------- */
+.adm-form__ayuda {
+  margin: 6px 2px 0;
+  font-size: 0.76rem;
+  color: var(--admin-texto-suave);
+}
+.adm-form__ayuda--derecha { text-align: right; }
+.adm-form__error {
+  margin: 6px 2px 0;
+  font-size: 0.78rem;
+  color: var(--admin-peligro);
+}
+.adm-form__error--general { margin-top: 20px; font-size: 0.88rem; }
+
+/* ---------- Botones ---------- */
+.adm-form__acciones {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 28px;
+  padding-top: 20px;
+  border-top: 1px solid var(--admin-borde);
+}
+.adm-form .btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 22px;
+  border: 1px solid var(--admin-borde);
+  border-radius: 9px;
+  background: var(--admin-superficie);
+  font: inherit;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--admin-texto);
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s, filter 0.15s;
+}
+.adm-form .btn:hover:not(:disabled) { border-color: var(--admin-primario); }
+.adm-form .btn:disabled { opacity: 0.6; cursor: default; }
+.adm-form .btn:focus-visible {
+  outline: 2px solid var(--admin-primario);
+  outline-offset: 2px;
+}
+.adm-form .btn--primario {
+  background: var(--admin-primario);
+  border-color: var(--admin-primario);
+  color: var(--admin-sobre-primario);
+}
+.adm-form .btn--primario:hover:not(:disabled) { filter: brightness(1.08); }
+
+/* ---------- Responsive ---------- */
+@media (max-width: 720px) {
+  .adm-form { padding: 18px; }
+  .adm-form__rejilla { grid-template-columns: 1fr; gap: 24px; }
+  .adm-form__acciones { flex-direction: column-reverse; }
+  .adm-form .btn { width: 100%; }
+  .adm-form-pagina .adm-form-pagina__titulo { font-size: 1.6rem; }
+}
+
+/* ============================================================
+   Banda vertical con texto rodando (estilo del círculo giratorio)
+   Es parte del fondo: ocupa toda la altura de la página, se desplaza
+   con ella al hacer scroll, queda detrás del contenido y no desplaza nada.
+   Color: --color-primario. Todo es decorativo.
+   ============================================================ */
+.admin { --banda-ancho: clamp(140px, 16vw, 230px); }
+
+/* El área principal es la referencia de la banda (abarca topbar y contenido)
+   y crea su propio contexto para que la banda quede detrás del contenido */
+.admin__main:has(.adm-banda) { position: relative; isolation: isolate; }
+/* La topbar se vuelve transparente para que la banda se vea hasta arriba */
+.admin:has(.adm-banda) .adm-topbar { background: transparent; }
+
+.adm-banda {
+  position: absolute; /* se mueve con la página, no con la ventana */
+  top: 0;
+  bottom: 0;
+  right: clamp(16px, 3vw, 14px); /* separada del borde derecho */
+  z-index: -1;
+  width: var(--banda-ancho);
+  overflow: hidden;
+  isolation: isolate;
+  background:
+    linear-gradient(90deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0) 45%, rgba(0, 0, 0, 0.14)),
+    var(--color-primario, #5b4fd6);
+  color: var(--color-sobre-primario, #ffffff);
+  box-shadow: 0 0 40px color-mix(in srgb, var(--color-primario, #5b4fd6) 35%, transparent);
+  pointer-events: none;
+  user-select: none;
+}
+
+/* Barrido cónico que gira despacio, como el disco del círculo */
+.adm-banda::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 260%;
+  aspect-ratio: 1;
+  translate: -50% -50%;
+  background: conic-gradient(
+    from 0deg,
+    rgba(255, 255, 255, 0.24),
+    rgba(255, 255, 255, 0) 35%,
+    rgba(255, 255, 255, 0.1) 65%,
+    rgba(255, 255, 255, 0.24)
+  );
+  animation: adm-banda-girar 40s linear infinite;
+  will-change: rotate;
+}
+
+.adm-banda__ventana {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(180deg, transparent, #000 6%, #000 94%, transparent);
+  mask-image: linear-gradient(180deg, transparent, #000 6%, #000 94%, transparent);
+}
+
+.adm-banda__pista {
+  display: flex;
+  flex-direction: column;
+  animation: adm-banda-rodar 40s linear infinite;
+  will-change: transform;
+}
+
+.adm-banda__texto {
+  flex: none;
+  writing-mode: vertical-rl; /* las letras se leen de arriba hacia abajo */
+  white-space: nowrap;
+  font-size: clamp(104px, 3.4vw, 104px);
+  fill: var(--color-primario);
+  opacity: 0.9;
+  font-weight: 900;
+  letter-spacing: 0.04em;
+}
+
+@keyframes adm-banda-rodar {
+  to { transform: translateY(-50%); }
+}
+@keyframes adm-banda-girar {
+  to { rotate: 360deg; }
+}
+
+/* En celulares se oculta para no estorbar la lectura */
+@media (max-width: 720px) {
+  .adm-banda { display: none; }
+}
+
+/* Quien prefiere menos movimiento ve la banda quieta */
+@media (prefers-reduced-motion: reduce) {
+  .adm-banda::before,
+  .adm-banda__pista { animation: none; }
+}

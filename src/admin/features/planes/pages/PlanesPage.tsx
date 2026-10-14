@@ -2,6 +2,7 @@ import { useMemo, useState } from 'react'
 import PlanesTable from '../components/PlanesTable'
 import { usePlanes } from '../components/hooks/usePlanes'
 import './PlanesPage.css'
+import { NavLink } from "react-router-dom";
 
 type Filtro = 'todos' | 'mensual' | 'anual'
 
@@ -18,10 +19,33 @@ function PlanesPage() {
 
   return (
     <div className="planes">
+      {/* Decoración de fondo: no es interactiva ni la leen los lectores de pantalla */}
+      <div className="planes__fondo" aria-hidden="true">
+        <div className="planes__orbe">
+          <div className="planes__disco" />
+
+          <svg className="planes__aro planes__aro--texto" viewBox="0 0 400 400">
+            <defs>
+              <path
+                id="planes-aro-texto"
+                d="M200,200 m-150,0 a150,150 0 1,1 300,0 a150,150 0 1,1 -300,0"
+              />
+            </defs>
+            <text>
+              <textPath href="#planes-aro-texto" textLength="936" lengthAdjust="spacing">
+                PLANES • PLANES • PLANES • PLANES • PLANES • PLANES •
+              </textPath>
+            </text>
+          </svg>
+        </div>
+      </div>
+
       <div className="planes__encabezado">
-        <h1>Planes</h1>
+        <h1 style={{ fontFamily: "Georgia, 'Times New Roman', serif", fontSize: "30px", fontWeight: "1000", fontStyle: "italic" }}>Planes</h1>
         <div className="planes__acciones">
-          <button className="btn btn--primario">Nuevo plan</button>
+          <NavLink to="/admin/planes/crear" className="btn btn--primario">
+            Nuevo plan
+          </NavLink>
           <button className="btn">Importar planes</button>
           <button className="btn">Exportar planes (Excel)</button>
         </div>

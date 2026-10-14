@@ -37,7 +37,9 @@ export default function Sidebar({ onNavegar }: { onNavegar: () => void }) {
     <div className="adm-sidebar">
       <div className="adm-sidebar__marca">
         <span className="adm-sidebar__logo-caja">
-          <img src={logo} alt="Zenntral" className="adm-sidebar__logo" />
+          <NavLink to="/" aria-label="Ir al inicio" rel="noopener noreferrer">
+            <img src={logo} alt="Zenntral" className="adm-sidebar__logo" />
+          </NavLink>
         </span>
         <span className="adm-sidebar__nombre">Zenntral</span>
       </div>

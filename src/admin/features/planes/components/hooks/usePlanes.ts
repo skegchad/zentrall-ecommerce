@@ -1,12 +1,13 @@
-import { useState } from 'react'
 import { planes as planesData } from '../../../../../data/Planes'
+import { crearStore } from '../../../../shared/crearStore'
 import type { Plan } from '../types/plan.types'
 
+// Un solo almacén para toda la app: el listado y CreatePage comparten los datos
+const store = crearStore<Plan>(planesData)
+
 export function usePlanes() {
-  const [planes, setPlanes] = useState<Plan[]>(planesData)
+  const planes = store.useLista()
+  const { crear, actualizar, eliminar } = store
 
-  // Solo quita el plan de la lista en pantalla; no modifica src/data/Planes.tsx
-  const eliminar = (id: number) => setPlanes((prev) => prev.filter((p) => p.id !== id))
-
-  return { planes, eliminar }
+  return { planes, crear, actualizar, eliminar }
 }
