@@ -2,7 +2,6 @@ import { useId, useRef, useState, type FormEvent } from 'react'
 import { Store, Layers } from 'lucide-react'
 import '../../../shared/AdminForm.css'
 
-/* Misma forma que tu tipo Servicio, sin el id */
 export interface ServicioFormValores {
   nombre: string
   categoria: string
@@ -10,13 +9,14 @@ export interface ServicioFormValores {
 }
 
 interface Props {
-  /** Para editar: pasa los valores actuales del servicio. Para crear, no pases nada. */
   valoresIniciales?: Partial<ServicioFormValores>
-  /** Categorías ya existentes, se ofrecen como sugerencia al escribir. */
   categorias?: string[]
   textoEnviar?: string
+  /** Solo lectura: muestra los datos pero no deja modificarlos (útil para borrar). */
+  deshabilitado?: boolean
   onEnviar: (valores: ServicioFormValores) => void | Promise<void>
   onCancelar: () => void
+  variante?: 'crear' | 'editar' | 'borrar'
 }
 
 const MAX_DESCRIPCION = 120
@@ -25,8 +25,10 @@ export default function ServiciosForm({
   valoresIniciales,
   categorias = [],
   textoEnviar = 'Guardar servicio',
+  deshabilitado = false,
   onEnviar,
   onCancelar,
+  variante= 'crear',
 }: Props) {
   const id = useId()
 
@@ -78,6 +80,10 @@ export default function ServiciosForm({
 
   return (
     <form className="adm-form" onSubmit={manejarEnvio} noValidate>
+      <fieldset
+        disabled={deshabilitado}
+        style={{ border: 0, padding: 0, margin: 0, minWidth: 0 }}
+      >
       <div className="adm-form__rejilla">
         {/* ---- General ---- */}
         <section className="adm-form__bloque">
@@ -164,7 +170,7 @@ export default function ServiciosForm({
           </p>
         </section>
       </div>
-
+      </fieldset>
       {errorEnvio && (
         <p className="adm-form__error adm-form__error--general" role="alert">
           {errorEnvio}
@@ -175,9 +181,13 @@ export default function ServiciosForm({
         <button type="button" className="btn" onClick={onCancelar} disabled={enviando}>
           Cancelar
         </button>
-        <button type="submit" className="btn btn--primario" disabled={enviando}>
-          {enviando ? 'Guardando…' : textoEnviar}
-        </button>
+        <button
+            type="submit"
+            className={`btn btn--primario botonEnviar--${variante}`}
+            disabled={enviando}
+          >
+            {enviando ? 'Guardando…' : textoEnviar}
+          </button>
       </div>
     </form>
   )

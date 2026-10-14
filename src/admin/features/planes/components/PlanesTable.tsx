@@ -1,9 +1,9 @@
+import { useNavigate } from 'react-router-dom'
 import type { Plan } from './types/plan.types'
 
 interface Props {
   planes: Plan[]
   onVer?: (plan: Plan) => void
-  onEditar?: (plan: Plan) => void
   onEliminar?: (plan: Plan) => void
 }
 
@@ -25,10 +25,11 @@ const formatoPrecio = (n: number) =>
     ? 'Gratis'
     : new Intl.NumberFormat('es-EC', { style: 'currency', currency: 'USD' }).format(n)
 
-// "informacion" trae saltos de línea: la primera línea es la descripción corta
 const resumen = (informacion: string) => informacion.split('\n')[0]
 
-function PlanesTable({ planes, onVer, onEditar, onEliminar }: Props) {
+function PlanesTable({ planes}: Props) {
+  const navigate = useNavigate() // <-- aquí, dentro del componente
+
   return (
     <div className="planes__tarjeta">
       <div className="planes__scroll">
@@ -57,13 +58,10 @@ function PlanesTable({ planes, onVer, onEditar, onEliminar }: Props) {
                 <td className="periodo">{p.periodo}</td>
                 <td>
                   <div className="operaciones">
-                    <button aria-label={`Ver ${p.nombre} ${p.periodo}`} onClick={() => onVer?.(p)}>
-                      <Icono d={ICONOS.ver} />
-                    </button>
-                    <button aria-label={`Editar ${p.nombre} ${p.periodo}`} onClick={() => onEditar?.(p)}>
+                    <button aria-label={`Editar ${p.nombre} ${p.periodo}`} onClick={() => navigate(`/admin/planes/${p.id}/editar`)}>
                       <Icono d={ICONOS.editar} />
                     </button>
-                    <button aria-label={`Eliminar ${p.nombre} ${p.periodo}`} className="peligro" onClick={() => onEliminar?.(p)}>
+                    <button aria-label={`Eliminar ${p.nombre} ${p.periodo}`} className="peligro" onClick={() => navigate(`/admin/planes/${p.id}/borrar`)}>
                       <Icono d={ICONOS.eliminar} />
                     </button>
                   </div>

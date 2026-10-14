@@ -405,3 +405,27 @@
   .adm-banda::before,
   .adm-banda__pista { animation: none; }
 }
+
+
+/* Colores de la banda decorativa */
+.adm-banda--crear  { --color-primario: #00c853; }
+.adm-banda--editar { --color-primario: #0099ff; }
+.adm-banda--borrar { --color-primario: #eb1515; }
+
+
+/* Colores de los botones */
+.botonEnviar--crear{
+  background-color: #00ff55 !important;
+  border-color: #00ff55 !important;
+}
+
+
+.botonEnviar--editar {
+  background-color: #0099ff !important;
+  border-color: #0099ff !important;
+}
+
+.botonEnviar--borrar {
+  background-color: #eb1515 !important;
+  border-color: #eb1515 !important;
+}

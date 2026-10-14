@@ -4,7 +4,6 @@ import '../../../shared/AdminForm.css'
 
 export type PeriodoPlan = 'mensual' | 'anual'
 
-/* Misma forma que tu tipo Planes, sin el id */
 export interface PlanFormValores {
   nombre: string
   informacion: string
@@ -13,11 +12,12 @@ export interface PlanFormValores {
 }
 
 interface Props {
-  /** Para editar: pasa los valores actuales del plan. Para crear, no pases nada. */
   valoresIniciales?: Partial<PlanFormValores>
   textoEnviar?: string
+  deshabilitado?: boolean
   onEnviar: (valores: PlanFormValores) => void | Promise<void>
   onCancelar: () => void
+  variante?: 'crear' | 'editar' | 'borrar'
 }
 
 const MAX_DESCRIPCION = 160
@@ -36,8 +36,10 @@ function separarInformacion(informacion = '') {
 export default function PlanForm({
   valoresIniciales,
   textoEnviar = 'Guardar plan',
+  deshabilitado = false,
   onEnviar,
   onCancelar,
+  variante = 'crear',
 }: Props) {
   const id = useId()
 
@@ -96,10 +98,12 @@ export default function PlanForm({
   /* ---------- Envío ---------- */
   async function manejarEnvio(e: FormEvent) {
     e.preventDefault()
-    setIntentado(true)
 
-    if (errores.nombre) return nombreRef.current?.focus()
-    if (errores.precio) return precioRef.current?.focus()
+    if (!deshabilitado) {
+      setIntentado(true)
+      if (errores.nombre) return nombreRef.current?.focus()
+      if (errores.precio) return precioRef.current?.focus()
+    }
 
     setEnviando(true)
     setErrorEnvio('')
@@ -111,7 +115,11 @@ export default function PlanForm({
         periodo,
       })
     } catch {
-      setErrorEnvio('No se pudo guardar el plan. Inténtalo de nuevo.')
+      setErrorEnvio(
+        deshabilitado
+          ? 'No se pudo completar la acción. Inténtalo de nuevo.'
+          : 'No se pudo guardar el plan. Inténtalo de nuevo.',
+      )
     } finally {
       setEnviando(false)
     }
@@ -122,7 +130,11 @@ export default function PlanForm({
 
   return (
     <form className="adm-form" onSubmit={manejarEnvio} noValidate>
-      <div className="adm-form__rejilla">
+      <fieldset
+        disabled={deshabilitado}
+        style={{ border: 0, padding: 0, margin: 0, minWidth: 0 }}
+      >
+        <div className="adm-form__rejilla">
         {/* ---- General ---- */}
         <section className="adm-form__bloque adm-form__bloque--ancho">
           <h2 className="adm-form__titulo">General</h2>
@@ -270,20 +282,25 @@ export default function PlanForm({
           </p>
         </section>
       </div>
+    </fieldset>
 
-      {errorEnvio && (
-        <p className="adm-form__error adm-form__error--general" role="alert">
-          {errorEnvio}
-        </p>
-      )}
+        {errorEnvio && (
+          <p className="adm-form__error adm-form__error--general" role="alert">
+            {errorEnvio}
+          </p>
+        )}
 
-      <div className="adm-form__acciones">
-        <button type="button" className="btn" onClick={onCancelar} disabled={enviando}>
-          Cancelar
-        </button>
-        <button type="submit" className="btn btn--primario" disabled={enviando}>
-          {enviando ? 'Guardando…' : textoEnviar}
-        </button>
+        <div className="adm-form__acciones">
+          <button type="button" className="btn" onClick={onCancelar} disabled={enviando}>
+            Cancelar
+          </button>
+          <button
+            type="submit"
+            className={`btn btn--primario botonEnviar--${variante}`}
+            disabled={enviando}
+          >
+            {enviando ? 'Guardando…' : textoEnviar}
+          </button>
       </div>
     </form>
   )

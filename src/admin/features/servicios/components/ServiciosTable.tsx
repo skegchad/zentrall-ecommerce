@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom'
 import type { Servicio } from './types/servicios.types'
 
 interface Props {
@@ -20,7 +21,8 @@ const ICONOS = {
   eliminar: 'M3 6h18M8 6V4h8v2m-9 0l1 14h8l1-14',
 }
 
-function ServiciosTable({ servicios, onVer, onEditar, onEliminar }: Props) {
+function ServiciosTable({ servicios}: Props) {
+  const navigate = useNavigate() // <-- aquí, dentro del componente
   return (
     <div className="servicios__tarjeta">
       <div className="servicios__scroll">
@@ -49,13 +51,10 @@ function ServiciosTable({ servicios, onVer, onEditar, onEliminar }: Props) {
                 </td>
                 <td>
                   <div className="operaciones">
-                    <button aria-label={`Ver ${s.nombre}`} onClick={() => onVer?.(s)}>
-                      <Icono d={ICONOS.ver} />
-                    </button>
-                    <button aria-label={`Editar ${s.nombre}`} onClick={() => onEditar?.(s)}>
+                    <button aria-label={`Editar ${s.nombre}`} onClick={() => navigate(`/admin/servicios/${s.id}/editar`)}>
                       <Icono d={ICONOS.editar} />
                     </button>
-                    <button aria-label={`Eliminar ${s.nombre}`} className="peligro" onClick={() => onEliminar?.(s)}>
+                    <button aria-label={`Eliminar ${s.nombre}`} className="peligro" onClick={() => navigate(`/admin/servicios/${s.id}/borrar`)}>
                       <Icono d={ICONOS.eliminar} />
                     </button>
                   </div>
