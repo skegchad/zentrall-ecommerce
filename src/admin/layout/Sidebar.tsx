@@ -2,7 +2,6 @@ import { NavLink } from "react-router-dom";
 import {
   LayoutDashboard,
   Package,
-  ShoppingCart,
   Users,
   Tags,
   BarChart3,
@@ -20,8 +19,7 @@ const MENU: Item[][] = [
   [
     { a: "/admin/planes", texto: "Planes", icono: <Package size={20} /> },
     { a: "/admin/servicios", texto: "Servicios", icono: <Tags size={20} /> },
-    { a: "/admin/pedidos", texto: "Pedidos", icono: <ShoppingCart size={20} /> },
-    { a: "/admin/clientes", texto: "Clientes", icono: <Users size={20} /> },
+    { a: "/admin/usuarios", texto: "Usuarios", icono: <Users size={20} /> },
   ],
   [
     { a: "/admin/reportes", texto: "Reportes", icono: <BarChart3 size={20} /> },

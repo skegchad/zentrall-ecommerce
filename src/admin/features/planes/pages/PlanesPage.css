@@ -333,3 +333,29 @@
   .planes__aro--texto,
   .planes__aro--punteado { animation: none; }
 }
+/* Luces de color del logo en el fondo */
+.planes__luces {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.45; /* tema claro: suave */
+  background:
+    radial-gradient(ellipse 100% 55% at 0% 0%, #7d5cff34 0%, transparent 70%),
+    radial-gradient(ellipse 50% 55% at 50% 100%, #7d5cff34 0%, transparent 70%);
+  animation: planes-luces 18s ease-in-out infinite alternate;
+}
+
+/* Tema oscuro: se ve mejor más tenue, como en tu captura */
+:root[data-tema='dark'] .planes__luces {
+  opacity: 0.28;
+}
+
+@keyframes planes-luces {
+  from { transform: scale(1) translate3d(0, 0, 0); }
+  to   { transform: scale(1.08) translate3d(1.5%, -1.5%, 0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .planes__luces { animation: none; }
+}

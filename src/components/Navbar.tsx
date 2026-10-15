@@ -6,7 +6,7 @@ import { useTema } from '../hooks/useTema'
 import './Navbar.css'
 
 const URL_REGISTRO = 'https://zentrall.argsoft.tech/registro'
-const URL_LOGIN = 'http://localhost:5173/admin'
+const URL_LOGIN = 'https://zentrall.argsoft.tech/login'
 
 const enlaces = [
   { nombre: 'Inicio', ruta: '/', icono: House },
@@ -65,14 +65,15 @@ function Navbar() {
             >
               {tema === 'dark' ? <Moon size={18} /> : <Sun size={18} />}
             </button>
-            <a
-              href={URL_LOGIN}
+            <NavLink
+              to="/admin"
               className="enlace-login"
               target="_blank"
               rel="noopener noreferrer"
+              onClick={cerrar}
             >
               Iniciar sesión
-            </a>
+            </NavLink>
             <a
               href={URL_REGISTRO}
               className="boton-entrar"
@@ -110,15 +111,15 @@ function Navbar() {
         </ul>
 
         <div className="sidebar-entrar">
-          <a
-            href={URL_LOGIN}
+          <NavLink
+            to="/admin"
             className="enlace-login"
             target="_blank"
             rel="noopener noreferrer"
             onClick={cerrar}
           >
             Iniciar sesión
-          </a>
+          </NavLink>
           <a
             href={URL_REGISTRO}
             className="boton-entrar"

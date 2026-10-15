@@ -21,6 +21,7 @@ function PlanesPage() {
     <div className="planes">
       {/* Decoración de fondo: no es interactiva ni la leen los lectores de pantalla */}
       <div className="planes__fondo" aria-hidden="true">
+        <div className="planes__luces" />
         <div className="planes__orbe">
           <div className="planes__disco" />
 

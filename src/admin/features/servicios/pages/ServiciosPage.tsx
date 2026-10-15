@@ -44,7 +44,7 @@ function ServiciosPage() {
       </div>
 
       <div className="servicios__encabezado">
-        <h1 style={{ color: "var(--color-activo-texto)", fontFamily: "Georgia, 'Times New Roman', serif", fontSize: "30px", fontWeight: "1000", fontStyle: "italic" }}>Servicios</h1>
+        <h1 style={{ fontFamily: "Georgia, 'Times New Roman', serif", fontSize: "30px", fontWeight: "1000", fontStyle: "italic" }}>Servicios</h1>
         <div className="servicios__acciones">
           <NavLink to="/admin/servicios/crear" className="btn btn--primario">
             Nuevo servicio

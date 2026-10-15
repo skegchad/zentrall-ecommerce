@@ -3,6 +3,7 @@ import { Route } from 'react-router-dom'
 
 import PlanesPage from './features/planes/pages/PlanesPage'
 import ServiciosPage from './features/servicios/pages/ServiciosPage'
+import UsuariosPage from './features/usuarios/pages/UsuariosPage'
 import CreatePlanesPage from './features/planes/pages/CreatePage'
 import CreateServiciosPage from './features/servicios/pages/CreatePage'
 import EditServiciosPage from './features/servicios/pages/EditPage'
@@ -29,6 +30,7 @@ const AdminRoutes = (
 
         <Route path="planes" element={<PlanesPage />} />
         <Route path="servicios" element={<ServiciosPage />} />
+        <Route path="usuarios" element={<UsuariosPage />} />
         <Route path="planes/crear" element={<CreatePlanesPage />} />
         <Route path="servicios/crear" element={<CreateServiciosPage />} />
         <Route path="/admin/planes/:id/editar" element={<PlanesEditPage />} />
